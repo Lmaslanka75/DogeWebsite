@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+.spriteImage {
+	border:1px solid black;
+	background-image:url(../images/DogeSpriteSet.png);
+	width:73px;
+	height:80px;
+	background-position: 0px 204px;  /* left and top */
+}
+.TL {
+	background-position: 0px 0px;  /* sprite looks top and left */
+}
+.TR {
+	background-position: -163px 0px; /* sprite looks top and right */
+}
+.open {
+	background-position: -326px 98px;  /* open mouth: in middle */
+}
+.BL {
+	background-position: 0px 204px;  /* sprite looks bottom and left */
+}
+.BR {
+	background-position: -168px 204px;  /* sprite looks bottom and right */
+}
+</style>
+<script>
+function $(id) {
+	return document.getElementById(id);
+}
+function setSprite(position){
+	//$("sprite").style.width="73px";
+	//$("sprite").style.height="90px";
+	var myClass="spriteImage " + position;
+	//alert ("setting sprite's class to "+myClass);
+	$("spriteId").className= myClass; 
+    //alert ("set the sprite");
+}
+
+</script>
+</head>
+<body>
+<img src="../images/DogeSpriteSet.png" width="486" height="307" />
+<br/><br/>
+<input type="submit" name="button" id="button" value="look top left" onClick="setSprite('TL')">
+<input type="submit" name="button" id="button" value="look top right" onClick="setSprite('TR')">
+<input type="submit" name="button" id="button" value="Open Mouth" onClick="setSprite('open')">
+<input type="submit" name="button" id="button" value="look bottom left" onClick="setSprite('BL')">
+<input type="submit" name="button" id="button" value="look bottom right" onClick="setSprite('BR')">
+<br/><br/>
+<div id="spriteId" class="sprite"></div>
+</body>
+</html>

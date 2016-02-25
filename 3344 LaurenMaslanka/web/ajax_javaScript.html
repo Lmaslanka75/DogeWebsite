@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+JAVASCRIPT 
+-->
+<html>
+    <head>
+        <title>JAVASCRIPT AJAX</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="JQueryStyle.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <input type="text" id="animal" name="animal" value="Dog" />
+        </div>
+        <div>
+            <input type="button" value="button" onClick="javascript:sendRequest()"/>
+        </div>
+
+
+
+        <!--JAVASCRIPT -->
+        <script>
+//            make Request object
+            var httpReq;
+            if (window.XMLHttpRequest)
+            {
+                httpReq = new XMLHttpRequest();  //For Firefox, Safari, Opera
+            } else if (window.ActiveXObject) {
+                httpReq = new ActiveXObject("Microsoft.XMLHTTP");         //For IE 5+
+            } else
+                alert('ajax not supported');
+
+            function sendRequest() //input animal type
+            {
+
+                var animal = document.getElementsByName("animal");
+                var call = "http://api.petfinder.com/breed.list?key=7d1b48f8bb891310e08a7faaf211a1de"
+                        + "&animal=" + animal + "";
+
+                httpReq.open("GET", call);
+                httpReq.onreadystatechange = handleResponse;
+                httpReq.send(null);
+            }
+
+            function handleResponse()
+            {
+                console.log(httpReq.status);
+                console.log(httpReq.statusText);
+
+                //completed page load and Page is found
+                if (httpReq.readyState == 4 && httpReq.status == 200) //code 100 means OK for this API
+                {
+                    var response = httpReq.responseText;
+                    alert("response text is " + response);
+
+                    // wrap the json in parentheses to avoid tripping over javascript ambiguity...
+                  //  response = "(" + response + ")";
+
+                    var jsonObj = eval(response);
+                    alert("animal is " + jsonObj.petfinderBreedList);
+                }
+            }
+
+
+
+
+
+//            $(document).ready(function () {
+//
+//                $('#btnYoda').click(function () {
+//
+//
+//                });
+
+
+//            }); // end of document ready function 
+        </script>
+
+
+
+
+    </body>
+</html>

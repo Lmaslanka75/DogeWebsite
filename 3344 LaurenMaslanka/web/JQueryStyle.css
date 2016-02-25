@@ -1,0 +1,313 @@
+body
+{
+    padding: 0;
+    margin: 0;
+}
+
+h1
+{
+    text-align:center;
+}
+
+#content
+{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    padding: 10px;
+    margin: auto;
+}
+
+.heading
+{
+    background-color: rgba(254, 123, 163,.4);
+    /*// background-image: url("https://img0.etsystatic.com/031/0/9391953/il_fullxfull.619220612_4jc2.jpg");*/
+}
+
+
+#footer
+{
+    clear:both;
+    text-align:center;	 
+    background-color:black;
+    color:#99DFE9;
+    width:100%;
+    bottom: 0px;
+
+}
+
+#dogeSaying
+{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    position:absolute;
+    font-size:20px; 
+    position:absolute;
+    font-weight: normal;
+    margin:6px;
+    z-index:-1; 
+
+}
+#dogeSaying2
+{
+    font-family: Arial, Helvetica, sans-serif; 
+    position:absolute;
+    font-size:20px; 
+    position:absolute;
+    font-weight: normal;
+    margin:6px;
+    z-index:-1; 
+
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    top:0px;
+    fixed:top;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+li a #lnkbtnProject1
+{
+    a:hover
+        {
+        color:#FE7BA3;
+
+    }
+}
+
+li a:hover:not(.active) {
+    background-color: #2D4ACA;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/*ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #333;
+    top:0px;
+}*/
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+li a #lnkbtnProject1
+{
+    a:hover
+        {
+        color:#FE7BA3;
+
+    }
+}
+
+li a:hover:not(.active) {
+    background-color: #2D4ACA;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+a
+{
+    text-decoration:none; 
+}
+
+/* unvisited link */
+a:link 
+{
+    color: #2D4ACA; 
+}
+
+/*visted link*/
+a:visited
+{
+    color:#99DFE9;  
+}
+
+a:hover
+{
+    color: #FE7BA3;
+}
+
+a:active
+{   
+
+}
+
+
+#myface
+{
+    /*border-radius: 50%;*/
+    width:236px;
+    height:236px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 100%;
+    z-index: 4;
+}
+
+* {
+    box-sizing: border-box;
+}
+.col-4 
+{
+    width: 30%;
+    display:inline-block;
+    height:350px;
+    background-color: #99DFE9; 
+    text-align:justify;
+}
+
+.container-fluid bg-1 text-center
+{
+    padding:20px;
+}
+
+.button
+{
+    display:block;
+    border-radius:50px;
+    font-size:20px;
+    color:#fff;
+    line-height:100px;
+    text-align:center;
+    background:#000;
+    transform-style:preserve-3d;
+}
+
+
+.flappyDoge
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Wrapper */
+.wrapper {
+    width: 350px;
+    margin: 20px auto;
+}
+
+.window 
+{
+    height: 450px;
+    background: url('http://s30.postimg.org/tycvlfagh/background.png');
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.score {
+    position: absolute;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 250%;
+    padding-top: 20px;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 2px 2px 0 #000;
+    z-index: 4;
+}
+
+/* Doge */
+.doge {
+    height: 23px;
+    width: 40px;
+    background: "images/dogebody.png";
+    position: absolute;
+    bottom: 50%;
+    left: 130px;
+    z-index: 3;
+    animation: DogeFlap 0.2s steps(3, end) infinite alternate;
+    transition: transform 0.3s;
+}
+
+@keyframes DogeFlap 
+{  
+    0% {background-position: 0 84px;}
+    100% {background-position: 0 0;}
+}
+
+
+/* Pipes */
+.pipe {
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    right: -60px;
+    z-index: 2;
+}
+
+.pipe.hidden {
+    display: none;
+}
+
+.pipe .topHalf {
+    background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') bottom;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.pipe .bottomHalf {
+    background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') top;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.restart
+{
+
+}
+
+.dogeNiceTry
+{
+    background-image: url("images/doge.png");
+    left:0;
+    z-index: 4;
+    position:relative;
+}
+
+#footer
+{
+    clear:both;
+    text-align:center;	 
+    background-color:black;
+    color:#99DFE9;
+    width:100%;
+    position: fixed;
+    bottom: 0px;
+
+}

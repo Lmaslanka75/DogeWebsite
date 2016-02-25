@@ -1,0 +1,369 @@
+/*page for final style sheet*/
+body
+{
+    padding: 0;
+    margin: 0;
+}
+
+.heading
+{
+    background-color: rgba(254, 123, 163,.4);
+    /*// background-image: url("https://img0.etsystatic.com/031/0/9391953/il_fullxfull.619220612_4jc2.jpg");*/
+}
+
+#pageTitle
+{
+
+}
+
+.navLink
+{
+
+}
+
+h1
+{
+    text-align:center;
+}
+
+#content
+{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    padding: 10px;
+    margin: auto;
+}
+
+p
+{
+    padding: 10px;
+}
+
+#footer
+{
+    clear:both;
+    text-align:center;	 
+    background-color:black;
+    color:#99DFE9;
+    width:100%;
+    position: fixed;
+    bottom: 0px;
+
+}
+
+#dogeSaying
+{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    position:absolute;
+    font-size:20px; 
+    position:absolute;
+    font-weight: normal;
+    margin:6px;
+    z-index:-1; 
+
+}
+#dogeSaying2{}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #333;
+    top:0px;
+    fixed:top;
+}
+
+ol
+{
+     list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    list-style-position:inside;
+    
+}
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+li a #lnkbtnProject1
+{
+    a:hover
+        {
+        color:#FE7BA3;
+
+    }
+}
+
+li a:hover:not(.active) {
+    background-color: #2D4ACA;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+a
+{
+    text-decoration:none; 
+}
+
+/* unvisited link */
+a:link 
+{
+    color: #2D4ACA; 
+}
+
+/*visted link*/
+a:visited
+{
+    color:#99DFE9;  
+}
+
+a:hover
+{
+    color: #FE7BA3;
+}
+
+a:active
+{   
+
+}
+
+#myface
+{
+    /*border-radius: 50%;*/
+    width:236px;
+    height:236px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 100%;
+    z-index: 4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 
+{
+    width: 33.0%;
+    display:inline-block;
+    box-sizing: border-box;
+    text-align:justify;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+
+}
+.col-12
+{
+    width:100%;
+}
+
+.clear
+{
+    clear:both;
+}
+
+#dogememe
+{
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width:100%;
+    height:180px;
+    box-sizing: border-box;
+    
+}
+
+
+
+
+/* image gallery*/
+div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 30%;
+}	
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.container-fluid bg-1 text-center
+{
+    padding:20px;
+}
+
+
+
+
+
+.button
+{
+    display:block;
+    border-radius:50px;
+    font-size:20px;
+    color:#fff;
+    line-height:100px;
+    text-align:center;
+    background:#000;
+    transform-style:preserve-3d;
+}
+
+
+/*sprite background*/
+#bg
+{
+    position:relative;
+    left:-20px;
+    z-index:-1;
+    background-image:url(images/dogYard.jpg);
+    background-size: contain;
+    background-repeat:no-repeat;
+    height:345px;
+    width:460px;
+    border-radius:20px;
+    box-shadow: 02px 02px 05px black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+#doge
+{
+    position:absolute;
+    top:262px;
+    left:20px;
+    z-index:3;
+/*    height: 85px; 225px;
+    width:  82px; 315px;*/
+    background-image:url(images/DogeSpriteSet.png);
+    background-repeat:no-repeat;
+    background-position-y: 0px; 
+}
+
+.btndoge
+{
+    right:200px;
+    left:auto;
+}
+
+
+.alldoges
+{
+    width:460px;
+}
+.doge0{
+    background-position: -471px -241px; 
+    width: 81px;
+    height: 77px;
+}
+.doge1{
+    background-position: 0px -5px; 
+    width: 66px;
+    height: 76px;
+}
+.doge2{
+    background-position: -82px -1px; 
+    width: 68px;
+    height: 80px;
+}
+.doge3{
+    /*background-position:-227px 0px;*/
+    background-position: -158px 0px; 
+    width: 76px;
+    height: 82px;
+}
+.doge4{
+    background-position: -237px -1px; 
+    width: 76px;
+    height: 80px;  
+}
+.doge5{
+    background-position: -318px -3px; 
+    width: 75px;
+    height: 79px;
+}
+.doge6{
+    background-position: -395px 0px; 
+    width: 81px;
+    height: 80px;
+}
+.doge7{
+    background-position: -478px 0px; 
+    width: 76px;
+    height: 85px;
+}
+.doge8
+{
+    background-position: -556px -2px; 
+    width: 82px;
+    height: 84px;   
+
+}
+.doge9{
+    background-position: -636px -4px; 
+    width: 74px;
+    height: 74px;
+}
+.doge10{
+background-position: -5px -82px; 
+width: 60px;
+height: 87px;
+    top:264px;
+}
+
+/*sneak attack*/
+.doge11
+{
+background-position: -3px -83px; 
+width: 60px;
+height: 85px;
+}
+.doge12
+{
+background-position: -77px -82px; 
+width: 66px;
+height: 83px;
+}
+.doge13
+{
+background-position: -147px -88px; 
+width: 75px;
+height: 79px;
+}
+.doge14
+{
+background-position: -235px -99px; 
+width: 82px;
+height: 67px;
+}
+
+

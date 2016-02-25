@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JQuery Doge</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="JQueryStyle.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <!--Top Navigation Bar -->
+                <div id="nav" style="width:100%;"> <!-- nav id for navigation bar -->
+            <ul>
+                <li> <a class="navLink" href="index.html">Home</a></li>
+                <li> <a class="navLink" href="ImageGallery.html">Gallery</a></li>
+                <li> <a class="navLink" href="http://www.entirelypets.com/top-pet-charities.html#humanesociety">Donate</a></li>
+                <ul style="float:right;list-style-type:none;">
+
+                    <li> <a class="navLink" href="lab1.html">Lab1</a></li>
+                    <li><a class="navLink" href="Animation.html">Animation</a></li>
+                    <li><a class="navLink" href="jQuery.html">JQuery</a></li>
+                </ul>
+            </ul> 
+            <div class="container-fluid bg-1 text-center">
+                <div class="heading" style="position: relative;">
+                    <img  id ="myface" src="doge_head-1.png" alt="" class="img-circle"  width="236" height="236" />
+                    <h4 id="dogeSaying" style="top:8%;color: #ff9933;">very background</h4>
+                    <h4 id="dogeSaying2" style="color:#9900cc; top:50%;left:20px">WOW!</h4>
+                    <h4 id="dogeSaying" style="color: #ff0000;top:85%;right:20%;bottom:10%;">much colors</h4>
+                   <h4 id="dogeSaying" style="color:#000000;top:6%;right:10px;">very floating</h4>
+                   <h4 id="dogeSaying" style="color: #3300ff;top:37%;right:3%;">such javascript</h4>
+                     <h4 id="dogeSaying" style="color:#00ffff;top:80%;">much doge</h4>
+                </div>
+
+            </div>
+        </div>
+       <!-- end of nav bar --> 
+
+       <!--Wrapper Div -->
+        <div class="wrapper">
+            <img class="flappyDoge" src="images/FlappyDogeWords.png" alt=""/>
+            <p>Click or Press space to begin! Refresh the page to restart. To play, move Doge inside the polls using the mouse/space bar.</p>
+            
+            <div class="window">
+                
+                <p class="score">0</p> 
+                <div class="doge">
+                  <img src="images/dogebody.png" alt=""/>
+                </div>
+
+                <div class="pipe hidden"></div>
+                <div class="pipe hidden"></div>
+            </div>
+         <!--  <img class="niceTryDoge" src="images/doge.png" alt=""/> -->
+            
+        </div>
+
+
+ <footer id ="footer"> Copyright Lauren Maslanka 2015</footer>
+
+
+        <!--JQuery Code -->
+        <script>
+            $(document).ready(function () {
+                
+                $window = $('.window'),
+                $doge = $('.doge'),
+                $btnrestart = $('.restart'),
+                $dogey = $(".niceTryDoge"),
+                fallTime = 1000,
+                gapHeight = 170,
+                gameState = 2,
+                pipeId = 0;
+
+
+// animate Doge Header// 
+                $("#myface").fadeTo("slow", 0.1);
+                var div = $("#myface");
+                div.animate({height: '300px', opacity: '0.7'}, "slow");
+                var wowText = $("#dogeSaying2");
+                wowText.animate({fontSize: '3em'}, "slow");
+//Set interval
+                var int = setInterval(function () {
+                    if (gameState === 1) {
+                        spawnPipe();
+                        movePipes();
+                    }
+                }, 1300);
+
+                var dogePosInterval = setInterval(function () {
+                    if (gameState === 1) {
+                        dogePos();
+                    }
+                }, 10);
+
+                $window.mousedown(function () {
+                    dogeFlap();
+                    if (gameState === 2) {
+                        gameState = 1;
+                        deleteInterval();
+                    }
+                });
+
+                $(window).keydown(function (e) {
+                    if (e.keyCode === 32) {
+                        dogeFlap();
+                        e.preventDefault();
+                        if (gameState === 2) {
+                            gameState = 1;
+                            deleteInterval();
+                        }
+                    }
+                });
+                
+              //  $(score)
+
+                function deleteInterval() {
+                    setTimeout(function () {
+                        var int = setInterval(function () {
+                            if (gameState === 1) {
+                                deletePipe();
+                            }
+                        }, 1300);
+                    }, 2050);
+                }
+
+                function dogeFlap() {
+                    if (gameState === 1 || gameState === 2) {
+                        $doge.css('transform', 'rotate(-20deg)');
+                        $doge.stop().animate({
+                            bottom: '+=50px'
+                        }, 200, function () {
+                            dogePos();
+                            $doge.css('transform', 'rotate(0deg)');
+                            $doge.stop().animate({
+                                bottom: '-=50px'
+                            }, 300, 'linear', function () {
+                                dogePos();
+                                gravity();
+                            });
+                        });
+                    }
+                }
+
+                function gravity() {
+                    dogePercent = parseInt($doge.css('bottom')) / $window.height();
+                    totalFallTime = fallTime * dogePercent;
+                    $doge.stop().animate({
+                        bottom: '0'
+                    }, totalFallTime, 'linear');
+
+                    $doge.css('transform', 'rotate(90deg)');
+                }
+
+                function spawnPipe() {
+                    pipeId++;
+                    pipeTopHeight = Math.floor(Math.random() * ($window.height() - 250)) + 50;
+                    pipeBottomHeight = $window.height() - (pipeTopHeight + gapHeight);
+                    pipe = '<div class="pipe" pipe-id="' + pipeId + '"><div style="height: ' + pipeTopHeight + 'px" class="topHalf"></div><div style="height:' + pipeBottomHeight + 'px" class="bottomHalf"></div></div>';
+                    $window.append(pipe);
+                }
+
+                function deletePipe() {
+                    $('.window .pipe').first().remove();
+                }
+
+                function movePipes() {
+                    $('.pipe').each(function () {
+                        $(this).animate({
+                            right: '+=160px'
+                        }, 1300, 'linear');
+                    });
+                }
+
+                function dogePos() {
+                    if (parseInt($doge.css('bottom')) === 0) {
+                        gameEnd();
+                    }
+
+                    curPipe = $('.pipe:nth-of-type(4)');
+                    if (curPipe.length > 0) {
+                        pipeTop = $('.pipe:nth-of-type(4) .topHalf');
+                        pipeBottom = $('.pipe:nth-of-type(4) .bottomHalf');
+                        if (($doge.offset().left + $doge.width()) >= curPipe.offset().left && $doge.offset().left <= (curPipe.offset().left + curPipe.width())) {
+                            if ($doge.offset().top < (curPipe.offset().top + pipeTop.height()) || ($doge.offset().top + $doge.height()) > ((curPipe.offset().top + pipeTop.height()) + gapHeight)) {
+                                gameEnd();
+                            }
+                        } else if ($doge.offset().left >= (curPipe.offset().left + curPipe.width())) {
+                            $('.score').text(curPipe.attr('pipe-id'));
+                        }
+                    }
+                }
+
+                function gameEnd() {
+                    clearInterval(dogePosInterval);
+                    $('.pipe').stop();
+                    gravity();
+                    gameState = 0;
+                    niceTryDoge();
+                }
+                
+//                function niceTryDoge()
+//                {  
+//                    dogey.show();
+//                    dogey.fadeIn("slow", 0.1);
+//                    
+//                }
+                
+//                function restart(){
+//                    gameState = 2,
+//                     pipeId = 0;
+//                }
+
+
+            });
+
+
+
+    
+
+        </script>
+    </body>
+</html>

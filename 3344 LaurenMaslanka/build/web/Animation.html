@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+    Lauren Maslanka
+    CIS 3344
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title id ="pageTitle"> Doge Page</title>
+        <link rel="stylesheet" type="text/css" href="Lab1Style.css"/>
+    </head>
+
+    <!--Body -->
+    <body>
+        <!-- Navigation bar -->
+        <div id="nav" style="width:100%;">
+            <ul>
+                <li> <a class="navLink" href="index.html">Home</a></li>
+                <li> <a class="navLink" href="ImageGallery.html">Gallery</a></li>
+                <li> <a class="navLink" href="http://www.entirelypets.com/top-pet-charities.html#humanesociety">Donate</a></li>
+                <ul style="float:right;list-style-type:none;">
+                    <li> <a class="navLink" href="lab1.html">Lab1</a></li>
+                    <li><a class="navLink" href="Animation.html">Animation</a></li>
+                    <li><a class="navLink" href="jQuery.html">JQuery</a></li>
+                </ul>
+            </ul>
+
+            <!--Words Floating around Doge Head Picture  -->
+            <div class="container-fluid bg-1 text-center">
+                <div class="heading" style="position: relative;">
+                    <img  id ="myface" src="doge_head-1.png" alt="" class="img-circle"  width="236" height="236" />
+                    <h4 id="dogeSaying" style="top:8%;color: #ff9933;">very background</h4>
+                    <h4 id="dogeSaying" style="color:#9900cc; top:50%;left:20px">WOW!</h4>
+                    <h4 id="dogeSaying" style="color: #ff0000;top:85%;right:20%;bottom:10%;">much colors</h4>
+                    <h4 id="dogeSaying" style="color:#000000;top:6%;right:10px;">very floating</h4>
+                    <h4 id="dogeSaying" style="color: #3300ff;top:37%;right:3%;">such javascript</h4>
+                    <h4 id="dogeSaying" style="color:#00ffff;top:80%;">much doge</h4>
+                </div>
+            </div>
+        </div>
+
+        <!--Content area below banner -->
+        <h1>Doge Page</h1>
+        <h3>Very Instructions. Press start to start Doge, Stop to stop Doge.</h3>
+        <div class=".btndoge">
+            <input type ="button" value="Change Pose" onclick="advancePose()"/>
+            <input type ="button" value="Move Doge" onclick="move()"/>
+            <input type="button" value="Start Doge" onclick="render()"/>
+            <input type="button" value="Stop Doge" onclick="stopMovement()"/>
+<!--            <input type="button" value ="Jump Attack" onclick="jumpAttack()"/>-->
+        </div>
+
+        <!--   start of sprite background -->
+        <div id="bg" style="margin-bottom: 10px; padding-bottom: 10%;">
+            <div  id="doge" class="doge0">
+            </div>
+        </div>
+
+        <!--Footer -->
+        <footer id ="footer"> Copyright Lauren Maslanka 2015</footer>
+
+        <!--JavaScript to move Doge -->
+        <script>
+            function $(element) {
+                return document.getElementById(element);
+            }
+
+
+
+            function advancePose() {
+                doge.advancePose();
+            }
+
+            function move() {
+                doge.move();
+            }
+
+            function jumpAttack()
+            {
+                doge.jumpAttack();
+            }
+            function stopMovement() {
+                clearInterval(timer);
+            }
+
+            function makeRandomNumber(low, high) {
+                var random = Math.random();
+                var diff = high - low * 1;
+
+                return Math.floor(random * diff + low);
+            }
+
+
+
+            function makeDoge() {
+
+                var myDoge = $("doge");
+
+                myDoge.imgNum = 0;
+                myDoge.maxImgNum = 9;
+
+
+                myDoge.top = 262;
+                myDoge.left = 6;
+                myDoge.dx = 6;//controls how much the doge moves across at a time
+
+                myDoge.advancePose = function () {
+                    // advance to next position of running zebra
+                    myDoge.imgNum++;
+                    if (myDoge.imgNum > myDoge.maxImgNum) {
+                        myDoge.imgNum = 1;
+                    }
+                    myDoge.className = "doge" + myDoge.imgNum;
+                    // console.log(doge class name is " + $("doge").className);
+                };
+
+                myDoge.move = function () {
+                    // myDoge.top += makeRandomNumber(-2, 2);
+                    myDoge.left += myDoge.dx;
+                    myDoge.style.top = myDoge.top + "px";
+                    myDoge.style.left = myDoge.left + "px";
+                    console.log("top style " + myDoge.style.top);
+                    console.log("left style " + myDoge.style.left);
+
+                    if (myDoge.left > 280)
+                    {
+                        myDoge.left = 5;
+                        myDoge.style.left = myDoge.left + "px";
+                    }
+                };
+
+  //variables for a specific sprite movement
+                    myDoge.imgNumber = 10;
+                    myDoge.maxImgNumber = 14;
+                myDoge.jumpAttack = function ()
+                {
+                    myDoge.left += myDoge.dx;
+                    myDoge.style.top = myDoge.top + "px";
+                    myDoge.style.left = myDoge.left + "px";
+                    console.log("top style " + myDoge.style.top);
+                    console.log("left style " + myDoge.style.left);
+                    console.log("doge number " + myDoge.imgNumber);
+
+                    if (myDoge.left > 280)
+                    {
+                        myDoge.left = 5;
+                        myDoge.style.left = myDoge.left + "px";
+                    }
+  
+
+                    myDoge.imgNumber++;
+                    if (myDoge.imgNumber > myDoge.maxImgNumber) {
+                        myDoge.imgNumber = 10;
+                    }
+                    myDoge.className = "doge" + myDoge.imgNumber;
+
+                }
+
+
+
+
+
+                return myDoge;
+            }
+//global timer variable to start and stop image from moving
+            var timer;
+
+            function render() {
+                doge.move();
+                doge.advancePose();
+                timer = setTimeout('render()', 125);
+            }
+
+
+
+
+
+//MAIN PROGRAM
+            doge = makeDoge();
+//            doge.advancePose();
+            // render();
+
+
+        </script>
+
+    </body>
+</html>
+
